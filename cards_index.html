@@ -35,12 +35,15 @@
                 <div class="card-body" >
                     <div class="card-title" ></div>
                     <div class="card-text" ></div>
-                    <div id="display">
-                        <h5 class="art-title"></h5>
-                        <img id="picture">
                     </div>
                  </div>
-            </div>
+         </template >
+         <template id="art-template" >
+            <div class="artCard ">
+                    <h4 class="artist"></h4>
+                    <h6 class="card-title" ></h6>
+                    <img class="card-pic" >
+                </div>
          </template >
 
        <div id="card-list"></div>
@@ -89,24 +92,23 @@
             let artist = array[i].name;
             let portfolioArt = array[i].portfolio;
 
+            const template = document.getElementById("art-template").content.cloneNode(true);
+            template.querySelector('.artist').innerText = artist
 
-            function artDisplay() { 
-                portfolioArt.forEach((element) => {
+           portfolioArt.forEach((element) => {
                 let title = element.title
                 let pictures = element.url
-                const template = document.getElementById("display").content.cloneNode(true)
-                    template.querySelector('#picture').setAttribute("src", pictures )
-                    template.querySelector(".art-title").innerText = title
-                    document.querySelector('#display').appendChild(template)})};
-
-            const template = document.getElementById("card-template").content.cloneNode(true)
-             template.querySelector('.card-title').innerText = artist
-             template.querySelector('.#display').innerText = artDisplay()
+                template.querySelector('.card-title').innerText = title
+                template.querySelector('img').src = pictures
+                template.querySelector('img').alt = title
+           })
+        
              document.querySelector('#card-list').appendChild(template);
 
-                }
+        }
+    };
 
-    }
+    
 
 
 
