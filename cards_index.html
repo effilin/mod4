@@ -35,7 +35,10 @@
                 <div class="card-body" >
                     <div class="card-title" ></div>
                     <div class="card-text" ></div>
-                    <div class="display"></div>
+                    <div id="display">
+                        <h5 class="art-title"></h5>
+                        <img id="picture">
+                    </div>
                  </div>
             </div>
          </template >
@@ -82,20 +85,33 @@
 
     function artistCards(array) {
         for(let i=0; i < array.length; i++) {
+
             let artist = array[i].name;
-            let portfolio = array[i].portfolio;
-            let art = portfolio.forEach(element => {
+            let portfolioArt = array[i].portfolio;
+
+
+            function artDisplay() { 
+                portfolioArt.forEach((element) => {
                 let title = element.title
-                let url = element.url
-                
-            });
+                let pictures = element.url
+                const template = document.getElementById("display").content.cloneNode(true)
+                    template.querySelector('#picture').setAttribute("src", pictures )
+                    template.querySelector(".art-title").innerText = title
+                    document.querySelector('#display').appendChild(template)})};
+
+            const template = document.getElementById("card-template").content.cloneNode(true)
+             template.querySelector('.card-title').innerText = artist
+             template.querySelector('.#display').innerText = artDisplay()
+             document.querySelector('#card-list').appendChild(template);
+
+                }
 
     }
-}
+
 
 
 addCardSimple(data);      
-addCard(artists);
+artistCards(artists);
         
         
         </script>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <template id="news-template">
-    <div class="card shadow p-4 m-3" style="width: 18rem;">
+    <div id="cardNodes" class="card shadow p-4 m-3" style="width: 18rem;">
         <div class="card-body" >
             <div class="card-title" ></div>
             <div class="card-text" ></div>
@@ -15,17 +15,19 @@
     </head>
     <body>
         <h1> Read The News</h1>
+
         <div id="news_cards" class="d-flex flex-row">
 
         </div>
         <div class="m-4 border border-primary">
           <div class="mb-3">
              <label for="newsStory" class="form-label">New Story Submission</label>
-             <input type="text" class="form-control" id="newsStory" placeholder="Breaking News....">
+             <input type="text" name="newsStory" class="form-control" id="newsStory" placeholder="Breaking News....">
           </div>
          <div class="mb-3">
              <label for="newsStoryText" class="form-label">Story Details</label>
-             <textarea class="form-control" id="newsStoryText" rows="4" placeholder="New community garden opens..."></textarea>
+             <textarea class="form-control" name="newsStoryText" id="newsStoryText" rows="4" placeholder="New community garden opens..."></textarea>
+             <button type="button" onclick="newNews()">Submit</button>
          </div>
 
         </div>

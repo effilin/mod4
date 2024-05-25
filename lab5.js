@@ -11,6 +11,11 @@ let news =[
 
 function printNews(array){
 
+    const element = document.getElementById("news_cards");
+    while(element.firstChild) {
+        element.removeChild(element.firstChild)
+    }
+
     for(let i=0; i <array.length; i++) {
    
     let title = array[i].title
@@ -23,32 +28,32 @@ function printNews(array){
 
 printNews(news);
 
+
 function checkNews(array) {
     
-    for(let i=0; i < array.length; i++ ) {
+    let titles = document.querySelectorAll(".card-title")
 
-        let titles = document.querySelector(".card")
-        if (titles[i] === array[i]) {
+          if (titles.length === array.length) {
             console.log("up to date");
-        }
-        else {
-        document.removeChild('#cards');
+        } else {
+          return printNews(array);
         }
     }
-    return printNews(array)
-}
 
-setInterval(checkNews, 5000);
+setInterval(checkNews(news), 5000);
 
-function NewsObject(titleInput, contentInput) {
-  this.id = news.length++;
-  this.title = titleInput;
-  this.content = contentInput;
-
+function NewsInput(inputTitle, inputContent) {
+    this.id = news.length +1;
+    this.title = inputTitle;
+    this.content = inputContent; 
 }
 
 function newNews() {
-
+    const title = document.getElementsByName("newsStory")[0].value;
+    const content = document.getElementsByName("newsStoryText")[0].value;
+    const updated = new NewsInput(title, content);
+    news.push(updated);
 }
 
+checkNews(news);
 
