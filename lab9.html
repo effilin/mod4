@@ -11,25 +11,30 @@
         <div id="main" style="width: 900px;height:600px;"></div>
 
         <script type="text/javascript">
+            
             // Specify the configuration items and data for the chart
             let options = {
             title: { text: 'Fake Store Categories' },
             xAxis: {
-            data: ['Category 1', 'Category 2', 'Category 3', 'Category 4']
+            data: [ ]
             },
             yAxis: {},
             series: [{
             name: '# products',
             type: 'bar',
-            data: [0, 1, 5, 2]
+            data: []
             }]
-            };
+         };
+    
             fetch('https://fakestoreapi.com/products')
             .then((response) => response.json())
             .then((json) => {
-            console.log(json)
+                json.forEach((element) => {
+                let newCat = element.category;
+                options.data.push(newCat)
+                 })
+                })
             // use this JSON to find and set correct option data for the chart
-            })
             .then(() => {
             // Display the chart
             myChart.setOption(options);

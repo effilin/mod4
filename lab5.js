@@ -7,7 +7,7 @@ let news =[
     { id: 3, title: 'Tornado Warning',
     content: "Residents should prepare..." }
 ]
-
+console.log(news);
 
 function printNews(array){
 
@@ -49,11 +49,12 @@ function NewsInput(inputTitle, inputContent) {
 }
 
 function newNews() {
-    const title = document.getElementsByName("newsStory")[0].value;
-    const content = document.getElementsByName("newsStoryText")[0].value;
+    const title = document.getElementById("newsStory").value;
+    const content = document.getElementById("newsStoryText").value;
     const updated = new NewsInput(title, content);
     news.push(updated);
 }
 
 checkNews(news);
+console.log(news);
 
